@@ -167,13 +167,20 @@ angular.module('angular-timezone-selector', [])
         })
 
         // This is a setup function and this is a hack, but it works to fire the setup function once at the right time
-        var watch = $scope.$watch('ngModel', setup)
+        // This is a setup function and this is a hack, but it works to fire the setup function once at the right time
+        // var watch = $scope.$watch('ngModel', setup)
 
-        function setup () {
-          elem.val($scope.ngModel)
+        // function setup () {
+        //   elem.val('string:'+$scope.ngModel)
+        //   console.log($scope.ngModel)
+        //   elem.trigger('chosen:updated')
+        //   watch()
+        // }
+
+        $scope.$watch('ngModel', function () {
+          elem.val('string:'+$scope.ngModel)
           elem.trigger('chosen:updated')
-          watch()
-        }
+        })
       }
     }
   }])
